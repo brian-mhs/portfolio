@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brian Mahesa — CX & Operations Leader | AI Trainer | VA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — edit colors, fonts, spacing here
+       ============================================================ */
+    :root {
+      --navy:      #0D1B2A;
+      --navy-2:    #152435;
+      --teal:      #00B4A6;
+      --teal-dim:  #009F93;
+      --gold:      #E8A838;
+      --white:     #F8F6F1;
+      --slate:     #8FA6B8;
+      --card-bg:   #1A2C3E;
+      --border:    rgba(143,166,184,0.15);
+
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body:    'Inter', sans-serif;
+
+      --radius:    12px;
+      --radius-sm: 6px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 6rem 0; }
+    .section--alt { background: var(--navy-2); }
+    .section--light { background: var(--white); color: var(--navy); }
+
+    .tag {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+    .section--light .tag { color: var(--teal-dim); }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+    .section-title span { color: var(--teal); }
+    .section--light .section-title span { color: var(--teal-dim); }
+    .section-sub {
+      color: var(--slate);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin-bottom: 4rem;
+      line-height: 1.8;
+    }
+    .section--light .section-sub { color: #5a6e7f; }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(13,27,42,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; }
+    .nav-logo span { color: var(--teal); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--slate); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--teal); color: var(--navy) !important;
+      padding: 0.45rem 1.1rem; border-radius: var(--radius-sm);
+      font-weight: 700 !important; font-size: 0.85rem !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--teal-dim) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding-top: 80px; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(0,180,166,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -150px; left: -150px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(232,168,56,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    .hero-availability {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(0,180,166,0.1); border: 1px solid rgba(0,180,166,0.3);
+      border-radius: 100px; padding: 0.35rem 1rem;
+      font-size: 0.8rem; font-weight: 600; color: var(--teal);
+      margin-bottom: 1rem; font-family: var(--font-display);
+    }
+    /* EDIT: change dot color to gray (#8FA6B8) if not available */
+    .hero-availability::before {
+      content: ''; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--teal); animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(1.3); }
+    }
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800; line-height: 1.08;
+      letter-spacing: -0.02em; margin-bottom: 0.75rem;
+    }
+    .hero-name .accent { color: var(--teal); }
+    .hero-title {
+      font-family: var(--font-display); font-size: 1rem;
+      font-weight: 500; color: var(--gold); margin-bottom: 1rem;
+      letter-spacing: 0.01em; line-height: 1.6;
+    }
+    .hero-bio {
+      color: var(--slate); font-size: 0.97rem;
+      max-width: 480px; margin-bottom: 2rem; line-height: 1.85;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--teal); color: var(--navy);
+      padding: 0.75rem 1.75rem; border-radius: var(--radius-sm);
+      font-family: var(--font-display); font-weight: 700; font-size: 0.9rem;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--teal-dim); transform: translateY(-1px); }
+    .btn-outline {
+      border: 1.5px solid var(--border); color: var(--slate);
+      padding: 0.75rem 1.75rem; border-radius: var(--radius-sm);
+      font-family: var(--font-display); font-weight: 600; font-size: 0.9rem;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover { border-color: var(--slate); color: var(--white); transform: translateY(-1px); }
+
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem; margin-top: 2rem; padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .stat-num { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--teal); line-height: 1; }
+    .stat-label { font-size: 0.78rem; color: var(--slate); margin-top: 0.2rem; }
+
+    .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+    .avatar-wrap {
+      width: 280px; height: 280px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal) 0%, #006e66 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 6rem; font-weight: 800;
+      color: var(--white); position: relative; flex-shrink: 0;
+      /* EDIT: Replace with <img src="your-photo.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"> */
+    }
+    .avatar-wrap::before {
+      content: ''; position: absolute; inset: -3px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--gold)); z-index: -1;
+    }
+    .badge-float {
+      position: absolute; background: var(--card-bg);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 0.75rem 1.1rem; font-size: 0.78rem; font-weight: 600;
+      font-family: var(--font-display); white-space: nowrap;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .badge-float .b-icon { margin-right: 0.4rem; }
+    .badge-outlier { top: 20px; right: -30px; color: var(--teal); }
+    .badge-exp     { bottom: 40px; left: -40px; color: var(--gold); }
+    .badge-lang    { top: 55%; right: -50px; color: var(--slate); }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .service-card:hover { border-color: var(--teal); transform: translateY(-3px); }
+    .service-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .service-card h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .service-card p { color: var(--slate); font-size: 0.88rem; line-height: 1.75; }
+    .service-tools { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tool-pill {
+      background: rgba(0,180,166,0.1); border: 1px solid rgba(0,180,166,0.2);
+      color: var(--teal); font-size: 0.7rem; font-weight: 600;
+      padding: 0.2rem 0.6rem; border-radius: 100px; font-family: var(--font-display);
+    }
+
+    /* EXPERIENCE */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+      width: 2px; background: var(--border);
+    }
+    .timeline-item { position: relative; margin-bottom: 2.5rem; }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -2.4rem; top: 6px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--teal); border: 2px solid var(--navy);
+      box-shadow: 0 0 0 3px rgba(0,180,166,0.2);
+    }
+    .timeline-period {
+      font-size: 0.75rem; font-weight: 600; color: var(--teal);
+      font-family: var(--font-display); letter-spacing: 0.05em;
+      text-transform: uppercase; margin-bottom: 0.3rem;
+    }
+    .timeline-role { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .timeline-company { font-size: 0.9rem; color: var(--gold); margin-bottom: 0.6rem; font-weight: 500; }
+    .timeline-desc { color: var(--slate); font-size: 0.88rem; line-height: 1.8; }
+    .timeline-desc ul { padding-left: 1.25rem; margin-top: 0.4rem; }
+    .timeline-desc li { margin-bottom: 0.35rem; }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .project-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .project-header {
+      padding: 1.25rem 1.5rem 0;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .project-category {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold); font-family: var(--font-display);
+    }
+    .project-status {
+      font-size: 0.68rem; font-weight: 600;
+      padding: 0.2rem 0.6rem; border-radius: 100px; font-family: var(--font-display);
+    }
+    .status-done    { background: rgba(0,180,166,0.12); color: var(--teal); }
+    .status-ongoing { background: rgba(232,168,56,0.12); color: var(--gold); }
+    .project-body { padding: 1rem 1.5rem 1.5rem; }
+    .project-body h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .project-body p { color: var(--slate); font-size: 0.85rem; line-height: 1.7; margin-bottom: 1rem; }
+    .project-result {
+      background: rgba(0,180,166,0.06); border-left: 3px solid var(--teal);
+      padding: 0.5rem 0.75rem; font-size: 0.8rem; color: var(--teal); font-weight: 600;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: 1rem;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .project-tag {
+      background: rgba(143,166,184,0.1); color: var(--slate);
+      font-size: 0.68rem; font-weight: 600; padding: 0.2rem 0.55rem;
+      border-radius: 100px; font-family: var(--font-display); letter-spacing: 0.04em;
+    }
+
+    /* SKILLS */
+    .skills-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    .skills-group h3 {
+      font-family: var(--font-display); font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem;
+    }
+    .skill-row { margin-bottom: 1.1rem; }
+    .skill-meta { display: flex; justify-content: space-between; margin-bottom: 0.35rem; font-size: 0.85rem; }
+    .skill-name { font-weight: 500; }
+    .skill-pct { color: var(--teal); font-weight: 700; font-family: var(--font-display); }
+    .skill-bar { height: 4px; background: var(--border); border-radius: 100px; overflow: hidden; }
+    .skill-fill {
+      height: 100%; border-radius: 100px;
+      background: linear-gradient(90deg, var(--teal), var(--gold));
+    }
+    .tool-cloud { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+    .tool-chip {
+      background: var(--card-bg); border: 1px solid var(--border);
+      color: var(--slate); font-size: 0.8rem; font-weight: 500;
+      padding: 0.35rem 0.85rem; border-radius: 100px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .tool-chip:hover { border-color: var(--teal); color: var(--white); }
+
+    /* AWARDS */
+    .awards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+    .award-card {
+      background: var(--navy); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      transition: border-color 0.25s;
+    }
+    .award-card:hover { border-color: var(--gold); }
+    .award-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+    .award-card h3 { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .award-card p { color: var(--slate); font-size: 0.8rem; }
+
+    /* CERTIFICATIONS */
+    .cert-list { display: flex; flex-direction: column; gap: 1rem; }
+    .cert-item {
+      display: flex; align-items: center; gap: 1rem;
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem 1.5rem;
+    }
+    .cert-badge {
+      width: 44px; height: 44px; border-radius: var(--radius-sm);
+      background: rgba(0,180,166,0.12); border: 1px solid rgba(0,180,166,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+    .cert-name { font-family: var(--font-display); font-weight: 700; font-size: 0.92rem; }
+    .cert-issuer { color: var(--slate); font-size: 0.78rem; margin-top: 0.2rem; }
+
+    /* TESTIMONIALS */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    .testi-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem;
+    }
+    .testi-quote { font-size: 3rem; color: var(--teal); opacity: 0.25; line-height: 1; font-family: Georgia, serif; margin-bottom: 0.5rem; }
+    .testi-text { color: var(--slate); font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.25rem; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+    .testi-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--gold));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 800; font-size: 0.9rem;
+      color: var(--navy); flex-shrink: 0;
+    }
+    .testi-name { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; }
+    .testi-role { font-size: 0.75rem; color: var(--slate); }
+    .stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 0.75rem; }
+
+    /* CONTACT */
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-info h2 { font-family: var(--font-display); font-size: clamp(1.8rem,3.5vw,2.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
+    .contact-info p { color: #5a6e7f; margin-bottom: 2rem; line-height: 1.8; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.75rem;
+      color: #3a5068; font-size: 0.9rem; font-weight: 500; transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--teal-dim); }
+    .contact-link-icon {
+      width: 38px; height: 38px; border-radius: var(--radius-sm);
+      background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.06);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .contact-form { background: var(--navy); border-radius: var(--radius); padding: 2rem; }
+    .contact-form h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--white); margin-bottom: 1rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block; font-size: 0.78rem; font-weight: 600; color: var(--slate);
+      margin-bottom: 0.35rem; font-family: var(--font-display);
+      text-transform: uppercase; letter-spacing: 0.07em;
+    }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; background: var(--card-bg); border: 1px solid var(--border);
+      color: var(--white); padding: 0.7rem 1rem; border-radius: var(--radius-sm);
+      font-family: var(--font-body); font-size: 0.9rem; outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--teal); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select option { background: var(--card-bg); }
+    .btn-form {
+      width: 100%; background: var(--teal); color: var(--navy);
+      padding: 0.85rem; border: none; border-radius: var(--radius-sm);
+      font-family: var(--font-display); font-weight: 700; font-size: 0.95rem;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .btn-form:hover { background: var(--teal-dim); }
+
+    /* FOOTER */
+    .footer {
+      background: #080f18; color: var(--slate);
+      padding: 2rem 0; text-align: center;
+      font-size: 0.82rem; border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--teal); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-visual { order: -1; }
+      .hero-bio { margin: 0 auto 1.5rem; }
+      .hero-actions { justify-content: center; }
+      .badge-float { display: none; }
+      .skills-columns { grid-template-columns: 1fr; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .avatar-wrap { width: 200px; height: 200px; font-size: 4rem; }
+    }
+    @media (max-width: 480px) {
+      .hero-stats { grid-template-columns: 1fr; gap: 1rem; }
+      .services-grid, .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">Brian<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <!-- EDIT: Change status if not available -->
+          <div class="hero-availability">Available for new projects</div>
+
+          <h1 class="hero-name">Brian<br><span class="accent">Mahesa</span></h1>
+
+          <!-- EDIT: Adjust title as needed -->
+          <p class="hero-title">
+            CX & Operations Leader &nbsp;·&nbsp; AI Trainer &nbsp;·&nbsp; QC Auditor<br>
+            Virtual Assistant &nbsp;·&nbsp; Data Annotator
+          </p>
+
+          <p class="hero-bio">
+            Results-driven customer experience and operations professional with over 10 years of progressive leadership across contact center management, quality assurance, and virtual assistance. Bilingual in English (C2 Proficient) and Bahasa Indonesia. Based in Jakarta, open to remote work worldwide.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn-primary">Work With Me</a>
+            <a href="#projects" class="btn-outline">View Portfolio</a>
+          </div>
+
+          <!-- EDIT: Update numbers to match your real stats -->
+          <div class="hero-stats">
+            <div>
+              <div class="stat-num">10+</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+            <div>
+              <div class="stat-num">20+</div>
+              <div class="stat-label">Projects Done</div>
+            </div>
+            <div>
+              <div class="stat-num">C2</div>
+              <div class="stat-label">English Proficiency</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <!-- EDIT: Replace "BM" with your photo:
+               <img src="your-photo.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"> -->
+          <div class="avatar-wrap">BM</div>
+          <div class="badge-float badge-outlier"><span class="b-icon">🔍</span> QC Auditor · Outlier</div>
+          <div class="badge-float badge-exp"><span class="b-icon">⭐</span> Best ecare Team Leader</div>
+          <div class="badge-float badge-lang"><span class="b-icon">🌏</span> EN · ID Bilingual</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section section--alt" id="services">
+    <div class="container">
+      <div class="tag">What I Do</div>
+      <h2 class="section-title">Services I <span>Offer</span></h2>
+      <p class="section-sub">From leading contact center teams to training large language models — I bring precision, leadership, and genuine care to every engagement.</p>
+
+      <!-- EDIT: Add, remove, or update service cards -->
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">🤝</div>
+          <h3>Virtual Assistant</h3>
+          <p>Administrative support, calendar management, email triage, research, scheduling, data entry, transcription, and translation — delivered remotely with speed and accuracy.</p>
+          <div class="service-tools">
+            <span class="tool-pill">Google Workspace</span>
+            <span class="tool-pill">Microsoft Office</span>
+            <span class="tool-pill">Zoom</span>
+            <span class="tool-pill">Slack</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">💬</div>
+          <h3>Customer Support</h3>
+          <p>Multi-channel front-line and team-lead level support. Complaint resolution, product inquiry handling, first-contact resolution, SLA adherence, and CSAT improvement.</p>
+          <div class="service-tools">
+            <span class="tool-pill">Contact Center</span>
+            <span class="tool-pill">Live Chat</span>
+            <span class="tool-pill">Email Support</span>
+            <span class="tool-pill">ecare</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">✨</div>
+          <h3>Customer Experience (CX)</h3>
+          <p>End-to-end CX operations management, KPI tracking, root cause analysis, CSAT/contact ratio improvement, and CX improvement projects including CPC optimization.</p>
+          <div class="service-tools">
+            <span class="tool-pill">CX Strategy</span>
+            <span class="tool-pill">CSAT</span>
+            <span class="tool-pill">KPI Reporting</span>
+            <span class="tool-pill">RCA</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🤖</div>
+          <h3>AI Trainer & LLM Evaluation</h3>
+          <p>Evaluating LLM responses for grammatical accuracy, cultural nuance, regional dialect, and conversational naturalness in Bahasa Indonesia. Dataset curation for more authentic AI interactions.</p>
+          <div class="service-tools">
+            <span class="tool-pill">Outlier</span>
+            <span class="tool-pill">Alignerr</span>
+            <span class="tool-pill">Appen</span>
+            <span class="tool-pill">Oneforma</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🔍</div>
+          <h3>QC Audit & Quality Assurance</h3>
+          <p>Systematic audit frameworks assessing labeling accuracy, model behavior, and trainer performance. Error pattern identification, corrective guidelines, and trainer feedback loops.</p>
+          <div class="service-tools">
+            <span class="tool-pill">Audit Frameworks</span>
+            <span class="tool-pill">QA</span>
+            <span class="tool-pill">Labeling QC</span>
+            <span class="tool-pill">Feedback Loops</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>Data Entry & Annotation</h3>
+          <p>Accurate data entry, annotation, and labeling for machine learning models. High accuracy rates across diverse task types with foundational knowledge of AI training pipelines.</p>
+          <div class="service-tools">
+            <span class="tool-pill">Data Annotation</span>
+            <span class="tool-pill">Data Labeling</span>
+            <span class="tool-pill">AI Feedback</span>
+            <span class="tool-pill">Remotasks</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🎓</div>
+          <h3>Training & Development</h3>
+          <p>Coaching sessions and training programs for customer-facing teams. Improving agent handling time, first-call resolution, and CSAT scores. Certified junior instructor and trainer of trainers.</p>
+          <div class="service-tools">
+            <span class="tool-pill">Coaching</span>
+            <span class="tool-pill">Training Delivery</span>
+            <span class="tool-pill">Bisa AI Academy</span>
+            <span class="tool-pill">BNSP Certified</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">⚙️</div>
+          <h3>Operations Management</h3>
+          <p>Multi-unit operations oversight covering fleet, customer support, and VIP support teams. Cross-functional coordination, KPI tracking, staffing alignment, and corrective action planning.</p>
+          <div class="service-tools">
+            <span class="tool-pill">Ops Leadership</span>
+            <span class="tool-pill">KPI Management</span>
+            <span class="tool-pill">Team of 20+</span>
+            <span class="tool-pill">Reporting</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="tag">Work History</div>
+      <h2 class="section-title">My <span>Experience</span></h2>
+      <p class="section-sub">Over a decade of progressive leadership across AI, operations, customer experience, and language learning.</p>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-period">Mar 2025 — Present</div>
+          <div class="timeline-role">QC Auditor Indonesia</div>
+          <div class="timeline-company">Outlier · Remote</div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Design and execute systematic audit frameworks assessing labeling accuracy, model behavior, and trainer performance.</li>
+              <li>Identify recurring error patterns and propose corrective guidelines to improve dataset consistency.</li>
+              <li>Integrate audit findings into trainer feedback loops, reinforcing continuous quality improvement.</li>
+              <li>Advanced from AI Trainer to QC Auditor within one year based on accuracy and consistency of contributions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-period">Apr 2024 — Present</div>
+          <div class="timeline-role">AI Trainer Indonesia</div>
+          <div class="timeline-company">Various Platforms (Outlier, Alignerr, Appen, Oneforma) · Remote</div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Evaluate LLM responses for grammatical accuracy, cultural nuance, regional dialect representation, and conversational naturalness in Bahasa Indonesia.</li>
+              <li>Curate high-quality, diverse datasets that enable AI systems to produce more authentic and empathetic interactions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-period">Oct 2024 — Present</div>
+          <div class="timeline-role">Co-Founder</div>
+          <div class="timeline-company">Flungo · Jakarta Metropolitan Area</div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Co-founded an online language learning platform offering courses in English, Japanese, Mandarin, and more.</li>
+              <li>Defined product vision, curriculum structure, and learner experience strategy from the ground up.</li>
+              <li>Lead early-stage operations including content planning, instructor coordination, and student onboarding.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-period">Apr 2023 — Jun 2024</div>
+          <div class="timeline-role">Head of Operations / Indonesia CX Manager</div>
+          <div class="timeline-company">Borzo Indonesia · Jakarta</div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Oversaw three operational units — Fleet, Customer Support, and VIP Support — for one of Indonesia's fastest-growing last-mile delivery platforms.</li>
+              <li>Unified cross-functional teams under a shared performance framework, reducing escalation response times.</li>
+              <li>Produced data-driven reports and root cause analyses that drove measurable CSAT and contact ratio improvements.</li>
+              <li>Initiated CX improvement projects including CPC optimization, collaborating directly with the Country Manager and CX Functional team.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-period">Mar 2022 — Aug 2022</div>
+          <div class="timeline-role">Independent Freelance Contractor</div>
+          <div class="timeline-company">Remotasks · Indonesia</div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Applied data annotation, labeling, and AI feedback techniques to train and optimize machine learning models.</li>
+              <li>Maintained high accuracy rates across diverse task types, building foundational knowledge of AI training pipelines.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-period">Mar 2019 — Dec 2021</div>
+          <div class="timeline-role">Customer Service Team Lead</div>
+          <div class="timeline-company">PT. Infomedia Nusantara (Telkomsel) · Bandung, West Java</div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Led a team of 14–18 Telkomsel customer service agents, consistently achieving above-target performance.</li>
+              <li>Designed and delivered coaching and training programs that improved handling time, first-call resolution, and CSAT scores.</li>
+              <li>Generated daily performance reports that informed staffing and skill-development decisions.</li>
+              <li>Recognized as Best ecare Team Leader (2nd Period, 2021) and Finalist at the Telkomsel Knowledge Competition (2021).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-period">Nov 2015 — Feb 2019</div>
+          <div class="timeline-role">Contact Center Officer</div>
+          <div class="timeline-company">PT Infomedia Solusi Humanika (ISH) · Indonesia</div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Provided front-line customer service for Telkomsel subscribers, handling product inquiries and complaint resolution.</li>
+              <li>Consistently delivered first-contact resolution with strong product knowledge, building the foundation for progression into team leadership.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-period">May 2014 — Aug 2014</div>
+          <div class="timeline-role">Sales Promotion Executive</div>
+          <div class="timeline-company">PT. Saka Farma Laboratories · Indonesia</div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Managed product visibility, stock availability, and brand presence across assigned retail channels.</li>
+              <li>Built relationships with pharmacy staff and distributors; supported sales targets through proactive merchandising.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section section--alt" id="projects">
+    <div class="container">
+      <div class="tag">Portfolio</div>
+      <h2 class="section-title">Selected <span>Projects</span></h2>
+      <p class="section-sub">A curated sample of work across AI training, CX operations, virtual assistance, and data annotation. Client details anonymized per confidentiality agreements.</p>
+
+      <!-- EDIT: Replace dummy projects with your real work as you collect them -->
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-category">AI Training / LLM</span>
+            <span class="project-status status-ongoing">Ongoing</span>
+          </div>
+          <div class="project-body">
+            <h3>Indonesian LLM Linguistic Evaluation</h3>
+            <p>Ongoing evaluation of LLM outputs for grammatical accuracy, cultural nuance, and regional dialect representation in Bahasa Indonesia across multiple AI platforms.</p>
+            <div class="project-result">🤖 Contributed to improved authenticity of Indonesian-language AI responses</div>
+            <div class="project-tags">
+              <span class="project-tag">Outlier</span>
+              <span class="project-tag">Alignerr</span>
+              <span class="project-tag">Appen</span>
+              <span class="project-tag">LLM Evaluation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-category">QC Audit</span>
+            <span class="project-status status-ongoing">Ongoing</span>
+          </div>
+          <div class="project-body">
+            <h3>AI Data Quality Audit Framework</h3>
+            <p>Designed and executed systematic audit frameworks at Outlier to assess labeling accuracy and trainer performance, with findings feeding directly into corrective guidelines.</p>
+            <div class="project-result">📋 Improved dataset consistency and compliance across audit cycles</div>
+            <div class="project-tags">
+              <span class="project-tag">QC Audit</span>
+              <span class="project-tag">Outlier</span>
+              <span class="project-tag">Data Quality</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-category">CX Operations</span>
+            <span class="project-status status-done">Completed</span>
+          </div>
+          <div class="project-body">
+            <h3>Borzo Indonesia CX Overhaul</h3>
+            <p>Led end-to-end CX operations for Borzo Indonesia as CX Manager, managing multi-channel contact teams, KPI reporting, and CPC optimization projects across Fleet, CS, and VIP Support units.</p>
+            <div class="project-result">📈 Measurable CSAT and contact ratio improvements within tenure</div>
+            <div class="project-tags">
+              <span class="project-tag">CX Management</span>
+              <span class="project-tag">CSAT</span>
+              <span class="project-tag">KPI Reporting</span>
+              <span class="project-tag">RCA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-category">Team Leadership</span>
+            <span class="project-status status-done">Completed</span>
+          </div>
+          <div class="project-body">
+            <h3>Telkomsel ecare Team Performance Program</h3>
+            <p>Designed and delivered coaching and training programs for a 14–18 agent Telkomsel ecare team, driving above-target performance across handling time, FCR, and CSAT metrics.</p>
+            <div class="project-result">🏆 Best ecare Team Leader Award — 2nd Period 2021</div>
+            <div class="project-tags">
+              <span class="project-tag">Team Lead</span>
+              <span class="project-tag">Coaching</span>
+              <span class="project-tag">CSAT</span>
+              <span class="project-tag">Telkomsel</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-category">EdTech / Startup</span>
+            <span class="project-status status-ongoing">Ongoing</span>
+          </div>
+          <div class="project-body">
+            <h3>Flungo — Online Language Learning Platform</h3>
+            <p>Co-founded Flungo, an EdTech startup offering personalized language courses in English, Japanese, Mandarin, and more. Overseeing product vision, curriculum design, and operations.</p>
+            <div class="project-result">🌏 Serving global learners with tech-driven language education</div>
+            <div class="project-tags">
+              <span class="project-tag">Co-Founder</span>
+              <span class="project-tag">EdTech</span>
+              <span class="project-tag">Curriculum Design</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-category">Data Annotation</span>
+            <span class="project-status status-done">Completed</span>
+          </div>
+          <div class="project-body">
+            <h3>ML Model Training Data Annotation</h3>
+            <p>Completed diverse annotation and AI feedback tasks on Remotasks to help train and optimize machine learning models, maintaining high accuracy rates across varied task types.</p>
+            <div class="project-result">✅ High accuracy across diverse ML annotation task types</div>
+            <div class="project-tags">
+              <span class="project-tag">Remotasks</span>
+              <span class="project-tag">Annotation</span>
+              <span class="project-tag">Data Labeling</span>
+              <span class="project-tag">ML Training</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="tag">Capabilities</div>
+      <h2 class="section-title">Skills & <span>Tools</span></h2>
+      <p class="section-sub">A blend of leadership, linguistic, operational, and AI-adjacent skills built across 10+ years of hands-on work.</p>
+
+      <!-- EDIT: Adjust skill names and percentages as needed -->
+      <div class="skills-columns">
+        <div class="skills-group">
+          <h3>Core Competencies</h3>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Customer Service & CX Operations</span><span class="skill-pct">97%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:97%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">AI Training & LLM Evaluation</span><span class="skill-pct">90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Quality Control & QC Auditing</span><span class="skill-pct">92%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Data Entry & Annotation</span><span class="skill-pct">95%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Operations Management</span><span class="skill-pct">88%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Training & Development Delivery</span><span class="skill-pct">88%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+          </div>
+        </div>
+
+        <div class="skills-group">
+          <h3>Language & Soft Skills</h3>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Bahasa Indonesia (Native)</span><span class="skill-pct">100%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:100%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">English (C2 Proficient — EF SET 73/100)</span><span class="skill-pct">93%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:93%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Attention to Detail</span><span class="skill-pct">97%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:97%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Team Leadership (14–20+ agents)</span><span class="skill-pct">92%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Remote Collaboration</span><span class="skill-pct">95%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Data-Driven Decision Making</span><span class="skill-pct">90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDIT: Add/remove tools you actually use -->
+      <div style="margin-top:4rem;">
+        <h3 style="font-family:var(--font-display);font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">Tools & Platforms</h3>
+        <div class="tool-cloud">
+          <span class="tool-chip">Microsoft Office Suite</span>
+          <span class="tool-chip">Google Workspace</span>
+          <span class="tool-chip">Zoom</span>
+          <span class="tool-chip">Slack</span>
+          <span class="tool-chip">Outlier</span>
+          <span class="tool-chip">Alignerr</span>
+          <span class="tool-chip">Appen</span>
+          <span class="tool-chip">Oneforma</span>
+          <span class="tool-chip">Remotasks</span>
+          <span class="tool-chip">Large Language Models (LLM)</span>
+          <span class="tool-chip">ChatGPT</span>
+          <span class="tool-chip">Claude</span>
+          <span class="tool-chip">Transcription Tools</span>
+          <span class="tool-chip">Translation Tools</span>
+          <span class="tool-chip">Audio Recording</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS & CERTIFICATIONS -->
+  <section class="section section--alt" id="awards">
+    <div class="container">
+      <div class="tag">Recognition</div>
+      <h2 class="section-title">Awards & <span>Certifications</span></h2>
+      <p class="section-sub">Formal recognition and credentials that validate my expertise in AI training, customer operations, and language proficiency.</p>
+
+      <!-- Certifications -->
+      <h3 style="font-family:var(--font-display);font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;">Certifications</h3>
+      <!-- EDIT: Update cert details / add new certifications -->
+      <div class="cert-list" style="margin-bottom:3rem;">
+        <div class="cert-item">
+          <div class="cert-badge">🌐</div>
+          <div>
+            <div class="cert-name">English Certificate — C2 Proficient (73/100)</div>
+            <div class="cert-issuer">EF SET · 2025</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-badge">🎓</div>
+          <div>
+            <div class="cert-name">Training Methodology — Junior Instructor</div>
+            <div class="cert-issuer">Indonesian Professional Certification Authority (BNSP) · 2025</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-badge">🤖</div>
+          <div>
+            <div class="cert-name">Training of Trainer</div>
+            <div class="cert-issuer">Bisa AI Academy · 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Awards -->
+      <h3 style="font-family:var(--font-display);font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;">Honors & Awards</h3>
+      <!-- EDIT: Add or remove awards -->
+      <div class="awards-grid">
+        <div class="award-card">
+          <div class="award-icon">🏆</div>
+          <h3>Best Ecare Team Leader</h3>
+          <p>2nd Period 2021 · PT. Infomedia Nusantara / Telkomsel</p>
+        </div>
+        <div class="award-card">
+          <div class="award-icon">🥈</div>
+          <h3>Finalist — Telkomsel Knowledge Competition</h3>
+          <p>2021 · Telkomsel National</p>
+        </div>
+        <div class="award-card">
+          <div class="award-icon">🗣️</div>
+          <h3>Finalist — Duta Bahasa Jawa Barat</h3>
+          <p>2014 · West Java Language Ambassador Competition</p>
+        </div>
+        <div class="award-card">
+          <div class="award-icon">🌟</div>
+          <h3>Finalist — Mojang Jajaka Kab. Bandung</h3>
+          <p>2015 · Bandung Regency Cultural Ambassador</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="tag">Client Reviews</div>
+      <h2 class="section-title">What People <span>Say</span></h2>
+      <p class="section-sub">Feedback from managers and clients throughout my career. Replace these with your real Upwork reviews as you collect them.</p>
+
+      <!-- EDIT: Replace with real testimonials from Upwork / LinkedIn -->
+      <div class="testimonials-grid">
+
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">Brian consistently delivers above-target performance. His coaching and training programs made a real difference in our team's handling time, first-call resolution, and overall CSAT scores. A genuine leader.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">I</div>
+            <div>
+              <div class="testi-name">Operations Manager</div>
+              <div class="testi-role">PT. Infomedia Nusantara · Telkomsel Account</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">Brian's audit work at Outlier has been exceptional — systematic, thorough, and always actionable. His feedback loops have genuinely improved trainer quality and dataset consistency across the board.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">O</div>
+            <div>
+              <div class="testi-name">Project Lead</div>
+              <div class="testi-role">Outlier · AI Training Platform</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">As Indonesia CX Manager at Borzo, Brian unified our cross-functional teams, drove meaningful CSAT improvements, and brought the kind of strategic clarity our operations needed during a critical growth period.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">B</div>
+            <div>
+              <div class="testi-name">Country Manager</div>
+              <div class="testi-role">Borzo Indonesia</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section--light" id="contact">
+    <div class="container">
+      <div class="contact-wrap">
+        <div class="contact-info">
+          <div class="tag">Get In Touch</div>
+          <h2>Let's work<br><span style="color:var(--teal-dim)">together.</span></h2>
+          <p>Open to remote opportunities in Virtual Assistance, Customer Support, CX Operations, AI Training, QC Auditing, Data Entry, and Data Annotation. Available for both hourly and project-based engagements worldwide.</p>
+          <!-- EDIT: Update with your real contact details -->
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:thebrianmahesa@gmail.com">
+              <div class="contact-link-icon">✉️</div>
+              thebrianmahesa@gmail.com
+            </a>
+            <a class="contact-link" href="https://www.linkedin.com/in/brian-mahesa/" target="_blank">
+              <div class="contact-link-icon">🔗</div>
+              linkedin.com/in/brian-mahesa
+            </a>
+            <a class="contact-link" href="https://www.upwork.com/freelancers/~01e7b1d1e7065013f8" target="_blank">
+              <div class="contact-link-icon">⬆</div>
+              Upwork Profile
+            </a>
+            <a class="contact-link" href="#">
+              <div class="contact-link-icon">🌏</div>
+              Jakarta, Indonesia (WIB / UTC+7)
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h3>Send a Quick Inquiry</h3>
+          <!-- EDIT: Connect to Formspree.io (free) — replace action="#" with your Formspree endpoint -->
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="e.g. Jane Smith"/>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="jane@company.com"/>
+          </div>
+          <div class="form-group">
+            <label>Type of Work</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>Virtual Assistant</option>
+              <option>Customer Support</option>
+              <option>Customer Experience (CX)</option>
+              <option>AI Training / LLM Evaluation</option>
+              <option>QC Audit / Quality Assurance</option>
+              <option>Data Entry</option>
+              <option>Data Annotation / Labeling</option>
+              <option>Training & Development</option>
+              <option>Operations Management</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell me about your project, role, or requirement..."></textarea>
+          </div>
+          <!-- EDIT: Wire to Formspree or EmailJS to make live -->
+          <button class="btn-form" onclick="alert('To make this form live, connect it to Formspree.io (free).')">
+            Send Message →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        © 2025 Brian Mahesa · Jakarta, Indonesia ·
+        <a href="mailto:thebrianmahesa@gmail.com">thebrianmahesa@gmail.com</a> ·
+        <a href="https://www.linkedin.com/in/brian-mahesa/" target="_blank">LinkedIn</a> ·
+        <a href="https://www.upwork.com/freelancers/~01e7b1d1e7065013f8" target="_blank">Upwork</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
